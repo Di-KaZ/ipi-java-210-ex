@@ -114,79 +114,79 @@ public class SudokuTest {
 			Assertions.assertThat(sousTableau).hasSize(9);
 			Assertions.assertThat(sousTableau).containsExactly((short)0, (short)0, (short)0, (short)0, (short)0, (short)0, (short)0, (short)0, (short)0);
 		});
-		
+
 	}
-		
-	
+
+
 	@Test
 	//Exercice 6
 	public void exo06LigneSaisieEstCoherenteLigneNulleVideEspaces() {
-		//Dans la méthode ligneSaisieEstCoherente, tester le paramètre ligneSaisie 
+		//Dans la méthode ligneSaisieEstCoherente, tester le paramètre ligneSaisie
 		//pour vérifier:
 		//La ligne ne doit pas être nulle ou vide, ou remplie d'espaces
 		//La ligne doit faire exactement 3 caractères
 		//La ligne doit avoir le format XYZ ou X et Y sont compris entre 0 et 8, et Y entre 1 et 9
 
-	    String message = "Les coordonnées du chiffre et/ou sa valeur ne peuvent pas être nulles, vides ou remplies avec des espaces\n";
-	    
+	    String message = "Les coordonnées du chiffre et/ou sa valeur ne peuvent pas être nulles, vides ou remplies avec des espaces";
+
 		checkValeurLigneSaisie(null, false, message);
 		checkValeurLigneSaisie("", false, message);
 		checkValeurLigneSaisie("    ", false, message);
-		
+
 	}
-	
-	
+
+
 	@Test
 	//Exercice 7
 	public void exo07LigneSaisieEstCoherenteLongeur3() {
-		//Dans la méthode ligneSaisieEstCoherente, tester le paramètre ligneSaisie 
+		//Dans la méthode ligneSaisieEstCoherente, tester le paramètre ligneSaisie
 		//pour vérifier qu'il fait 3 caractères
-	    String message = "Les coordonnées du chiffre et/ou sa valeur doit faire 3 caractères\n";
-	    
+	    String message = "Les coordonnées du chiffre et/ou sa valeur doit faire 3 caractères";
+
 	    checkValeurLigneSaisie("5555", false, message);
 	    checkValeurLigneSaisie("55", false, message);
 	    checkValeurLigneSaisie("567", true, "");
 	}
-	
+
 	@Test
 	//Exercice 8
 	public void exo08LigneSaisieEstCoherenteAbscisse0_8() {
-		//Dans la méthode ligneSaisieEstCoherente, tester le paramètre ligneSaisie 
+		//Dans la méthode ligneSaisieEstCoherente, tester le paramètre ligneSaisie
 		//pour vérifier que le premier caractère est un chiffre entre 0 et 8
-	    String message = "L'abscisse et l'ordonnée doivent être compris entre 0 et 8, la valeur entre 1 et 9\n";
-	   	
+	    String message = "L'abscisse et l'ordonnée doivent être compris entre 0 et 8, la valeur entre 1 et 9";
+
 		checkValeurLigneSaisie("911", false, message);
 		checkValeurLigneSaisie(" 11", false, message);
 		checkValeurLigneSaisie("X11", false, message);
 		checkValeurLigneSaisie("567", true, "");
 	}
-	
+
 	@Test
 	//Exercice 9
 	public void exo09LigneSaisieEstCoherenteOrdonnee0_8() {
-		//Dans la méthode ligneSaisieEstCoherente, tester le paramètre ligneSaisie 
+		//Dans la méthode ligneSaisieEstCoherente, tester le paramètre ligneSaisie
 		//pour vérifier que le deuxième caractère est un chiffre entre 0 et 8
-	    String message = "L'abscisse et l'ordonnée doivent être compris entre 0 et 8, la valeur entre 1 et 9\n";
-	   	
+	    String message = "L'abscisse et l'ordonnée doivent être compris entre 0 et 8, la valeur entre 1 et 9";
+
 		checkValeurLigneSaisie("191", false, message);
 		checkValeurLigneSaisie("1 1", false, message);
 		checkValeurLigneSaisie("1X1", false, message);
 		checkValeurLigneSaisie("567", true, "");
 	}
-	
+
 	@Test
 	//Exercice 10
 	public void exo10LigneSaisieEstCoherenteValeur1_9() {
-		//Dans la méthode ligneSaisieEstCoherente, tester le paramètre ligneSaisie 
+		//Dans la méthode ligneSaisieEstCoherente, tester le paramètre ligneSaisie
 		//pour vérifier que le troisième caractère est un chiffre entre 1 et 9
-	    String message = "L'abscisse et l'ordonnée doivent être compris entre 0 et 8, la valeur entre 1 et 9\n";
-	   	
+	    String message = "L'abscisse et l'ordonnée doivent être compris entre 0 et 8, la valeur entre 1 et 9";
+
 		checkValeurLigneSaisie("110", false, message);
 		checkValeurLigneSaisie("10 ", false, message);
 		checkValeurLigneSaisie("10X", false, message);
 		checkValeurLigneSaisie("567", true, "");
 	}
-	
+
 	@Test
 	//Exercice 11
 	public void exo11DemandeCoordonneesSudoku() {
@@ -198,7 +198,7 @@ public class SudokuTest {
 		ByteArrayInputStream inContent;
 		inContent = new ByteArrayInputStream("015\n024\nFIN".getBytes());
 	    System.setIn(inContent);
-	    
+
 	    String[] coordonnees = Sudoku.demandeCoordonneesSudoku();
 	    Assertions.assertThat(coordonnees).isNotNull();
 	    Assertions.assertThat(coordonnees).isNotEmpty();
@@ -206,10 +206,10 @@ public class SudokuTest {
 	    Assertions.assertThat(coordonnees[0]).isEqualTo("015");
 	    Assertions.assertThat(coordonnees[1]).isEqualTo("024");
 	    Assertions.assertThat(coordonnees[2]).isNull();
-	    
+
 		inContent = new ByteArrayInputStream("FIN".getBytes());
 	    System.setIn(inContent);
-	    
+
 	    coordonnees = Sudoku.demandeCoordonneesSudoku();
 	    Assertions.assertThat(coordonnees).isNotNull();
 	    Assertions.assertThat(coordonnees).isNotEmpty();
@@ -223,9 +223,9 @@ public class SudokuTest {
 	public void exo12TestRemplitSudokuATrous() {
 		//Ecrire le contenu de la méthode remplitSudokuATrous
 		Sudoku monSudoku = new Sudoku();
-		
+
 		monSudoku.remplitSudokuATrous(new String[] {});
-		
+
 		short[][] sudokuAResoudre = (short[][]) invokeGetter(monSudoku, "sudokuAResoudre");
 		Assertions.assertThat(sudokuAResoudre).isNotNull();
 		short[][] tab =
@@ -240,9 +240,9 @@ public class SudokuTest {
 			    {0, 0, 0, 0, 0, 0, 0, 0, 0},
 			    {0, 0, 0, 0, 0, 0, 0, 0, 0}
 			};
-		
+
 		Assertions.assertThat(sudokuAResoudre).isEqualTo(tab);
-		
+
 		monSudoku = new Sudoku();
 		short[][] tab2 =
 			{
@@ -257,10 +257,10 @@ public class SudokuTest {
 			    {0, 0, 0, 0, 0, 0, 0, 0, 0}
 			};
 		monSudoku.remplitSudokuATrous(new String[] {"012"});
-		
+
 		sudokuAResoudre = (short[][]) invokeGetter(monSudoku, "sudokuAResoudre");
 		Assertions.assertThat(sudokuAResoudre).isEqualTo(tab2);
-		
+
 		monSudoku = new Sudoku();
 		short[][] tab3 = {
 				{1, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -274,12 +274,12 @@ public class SudokuTest {
 			    {0, 0, 0, 0, 0, 0, 7, 0, 0}
 			};
 		monSudoku.remplitSudokuATrous(new String[] {"001", "114", "225", "303", "412", "526", "649", "758", "867"});
-	
+
 		sudokuAResoudre = (short[][]) invokeGetter(monSudoku, "sudokuAResoudre");
 		Assertions.assertThat(sudokuAResoudre).isEqualTo(tab3);
-	
+
 	}
-	
+
 	@Test
 	//Exercice 13
 	public void exo13EcrireSudoku() {
@@ -299,24 +299,24 @@ public class SudokuTest {
 		ByteArrayOutputStream outContent;
 		outContent = new ByteArrayOutputStream();
 	    System.setOut(new PrintStream(outContent));
-	    
+
 		monSudoku.ecrireSudoku(tab);
-		
+
 		Assertions.assertThat(outContent.toString().trim()).isEqualToNormalizingNewlines(
-				" -----------------------\n" + 
-				"|   8   | 4   2 |   6   |\n" + 
-				"|   3 4 |       | 9 1   |\n" + 
-				"| 9 6   |       |   8 4 |\n" + 
-				" -----------------------\n" + 
-				"|       | 2 1 6 |       |\n" + 
-				"|       |       |       |\n" + 
-				"|       | 3 5 7 |       |\n" + 
-				" -----------------------\n" + 
-				"| 8 4   |       |   7 5 |\n" + 
-				"|   2 6 |       | 1 3   |\n" + 
-				"|   9   | 7   1 |   4   |\n" + 
+				" -----------------------\n" +
+				"|   8   | 4   2 |   6   |\n" +
+				"|   3 4 |       | 9 1   |\n" +
+				"| 9 6   |       |   8 4 |\n" +
+				" -----------------------\n" +
+				"|       | 2 1 6 |       |\n" +
+				"|       |       |       |\n" +
+				"|       | 3 5 7 |       |\n" +
+				" -----------------------\n" +
+				"| 8 4   |       |   7 5 |\n" +
+				"|   2 6 |       | 1 3   |\n" +
+				"|   9   | 7   1 |   4   |\n" +
 				" -----------------------\n");
-		
+
 	}
 
 	@Test
@@ -366,24 +366,24 @@ public class SudokuTest {
 		ByteArrayOutputStream outContent;
 		outContent = new ByteArrayOutputStream();
 	    System.setOut(new PrintStream(outContent));
-	    
+
 	    Assertions.assertThat(monSudoku.resoudre(0, 0, tab)).isTrue();
 	    monSudoku.ecrireSudoku(tab);
 		Assertions.assertThat(outContent.toString().trim()).isEqualToNormalizingNewlines(
-				" -----------------------\n" + 
-				"| 1 8 7 | 4 9 2 | 5 6 3 |\n" + 
-				"| 5 3 4 | 6 7 8 | 9 1 2 |\n" + 
-				"| 9 6 2 | 1 3 5 | 7 8 4 |\n" + 
-				" -----------------------\n" + 
-				"| 4 5 8 | 2 1 6 | 3 9 7 |\n" + 
-				"| 2 7 3 | 8 4 9 | 6 5 1 |\n" + 
-				"| 6 1 9 | 3 5 7 | 4 2 8 |\n" + 
-				" -----------------------\n" + 
-				"| 8 4 1 | 9 6 3 | 2 7 5 |\n" + 
-				"| 7 2 6 | 5 8 4 | 1 3 9 |\n" + 
-				"| 3 9 5 | 7 2 1 | 8 4 6 |\n" + 
+				" -----------------------\n" +
+				"| 1 8 7 | 4 9 2 | 5 6 3 |\n" +
+				"| 5 3 4 | 6 7 8 | 9 1 2 |\n" +
+				"| 9 6 2 | 1 3 5 | 7 8 4 |\n" +
+				" -----------------------\n" +
+				"| 4 5 8 | 2 1 6 | 3 9 7 |\n" +
+				"| 2 7 3 | 8 4 9 | 6 5 1 |\n" +
+				"| 6 1 9 | 3 5 7 | 4 2 8 |\n" +
+				" -----------------------\n" +
+				"| 8 4 1 | 9 6 3 | 2 7 5 |\n" +
+				"| 7 2 6 | 5 8 4 | 1 3 9 |\n" +
+				"| 3 9 5 | 7 2 1 | 8 4 6 |\n" +
 				" -----------------------\n");
-		
+
 	}
 
 	public void exo16JavaDoc(){
@@ -404,7 +404,7 @@ public class SudokuTest {
 		Assertions.assertThat(resultat).as("La vérification de la valeur " + valeur + " devrait renvoyer : " + ok).isEqualTo(ok);
 		Assertions.assertThat(outContent.toString().trim()).as("Le message affiché devrait être : " + message).isEqualToNormalizingNewlines(message);
 	}
-	
+
 	private void invokeSetter(Object obj, String variableName, Object variableValue){
       /* variableValue is Object because value can be an Object, Integer, String, etc... */
       try {
@@ -419,7 +419,7 @@ public class SudokuTest {
         Assertions.fail("Impossible d'appeler le setter");
       }
    }
-	
+
 	private Object invokeGetter(Object obj, String variableName){
       try {
         /**
