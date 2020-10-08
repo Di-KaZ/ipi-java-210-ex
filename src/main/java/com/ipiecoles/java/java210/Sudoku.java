@@ -224,12 +224,6 @@ public class Sudoku {
 			boxCoord[1] = 3;
 		else
 			boxCoord[1] = 6;
-		System.out.println(abscisse);
-		System.out.println('-');
-		System.out.println(ordonnee);
-		System.out.println('-');
-		System.out.println(boxCoord[0]);
-		System.out.println('-');
 		return boxCoord;
 	}
 
